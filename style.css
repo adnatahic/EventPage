@@ -1,0 +1,90 @@
+ul li {
+  background-color: transparent;
+  list-style-type: none;
+  width: auto;
+  min-width: 200px;
+  padding: -200px;
+  margin: auto;
+  margin-left: 1px;
+  border-left: 1px;
+  font-size-adjust: 0.58;
+}
+li a:hover {
+  color: #C0C0C0;
+}
+.active a {
+  color: #FF9999;
+}
+.active a:hover {
+  color: #FF9999;
+}
+li a {
+  color: #400000;
+  font-size: 20px;
+  text-decoration: none;
+  font-family: verdana, sans-serif;
+  font-size-adjust: 0.58;
+  margin-left: 30px;
+}
+li {
+  float: left;
+  text-align: center;
+  margin-top: -30px;
+}
+ul {
+  margin: 10px;
+  margin-top: -56px;
+}
+.logo {
+  text-align: center;
+  text-shadow: 5px 5px 0px #FFCCCC, 7px 7px 0px #380000, 0 0 20px #fefcc9, 10px -10px 30px #330000, -20px -20px 40px #ffae34, 20px -40px 50px #660033, -20px -60px 60px #cd4606, 0 -80px 70px #973716, 10px -90px 80px #451b0e, 8px 8px 0 rgba(255, 0, 180, 0.5), 0 0 10px #FF0000, 0 0 20px #FF0000, 0 0 30px #FF0000, 0 0 40px #FF0000, 0 0 70px #FF0000, 0 0 80px #FF0000, 0 0 100px #FF0000, 0 0 150px #FF0000;
+  font-size: 55px;
+  font-size-adjust: 0.58;
+  margin-top: -30px;
+  margin-right: 20%;
+  margin-left: -3%;
+}
+body {
+  background-color: inherit;
+  background-color: #CC3333;
+}
+.naslov div {
+  background-color: #000033;
+}
+.krug {
+  width: 256px;
+  height: 100px;
+  background: #A0A0A0;
+  border-radius: 50px;
+
+}
+
+.forma{
+  width: 17%;
+  height: 100%;
+  border: 1px black;
+  margin-left: 40%;
+  margin-top: 13%;
+  background-color: gray;
+
+
+}
+
+label{
+  font-size: 19px;
+  font-family: verdana, sans-serif;
+}
+th{
+  text-align: center;
+  font-size: 20px;
+  font-family: verdana, sans-serif;
+  padding-bottom: 17px;
+}
+td{
+padding-bottom: 25px;
+}
+
+.dugme{
+  align-items: flex-end;
+  color: red;
+}
