@@ -11,7 +11,7 @@
   font-size-adjust: 0.58;
 }
 .item a:hover {
-  color: #C0C0C0;
+  color: #fff;
 }
 .active a {
   font-weight: bolder;
@@ -19,13 +19,13 @@
   text-decoration: none;
   font-family: verdana, sans-serif;
   font-size-adjust: 0.58;
-  color: black;
+  color: #80aaff;
 }
 .active a:hover {
   font-weight: lighter;
 }
 .item a {
-  color: #400000;
+  color: #fff;
   font-size: 20px;
   text-decoration: none;
   font-family: verdana, sans-serif;
@@ -52,14 +52,13 @@
   margin-left: -3%;
 
 }
-.logo:hover{
-  zoom:1.8;
-}
+
 
 body {
   background-color: inherit;
   background-color: #CC3333;
     background-image: url("pozadina.jpg");
+    background-repeat: repeat;
 }
 .naslov div {
   background-color: #000033;
@@ -75,7 +74,7 @@ body {
   width: 17%;
   height: 100%;
   border: 1px black;
-  margin-top: 13%;
+  margin-top: 5%;
   margin-left: auto;
   margin-right: auto;
 
@@ -122,11 +121,6 @@ td {
   /*float: left;*/
 }
 
-@media screen
-  and (min-device-width: 1200px)
-  and (max-device-width: 1600px)
-  and (-webkit-min-device-pixel-ratio: 1) {
-}
 
 .novosti {
   height: 220px;
