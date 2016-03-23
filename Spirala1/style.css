@@ -1,24 +1,30 @@
-ul li {
+
+/* pocetna*/
+.meni > li {
   background-color: transparent;
   list-style-type: none;
   width: auto;
   min-width: 200px;
-  padding: -200px;
   margin: auto;
-  margin-left: 1px;
+  margin-left: 8px;
   border-left: 1px;
   font-size-adjust: 0.58;
 }
-li a:hover {
+.item a:hover {
   color: #C0C0C0;
 }
 .active a {
-  color: #FF9999;
+  font-weight: bolder;
+  font-size: 20px;
+  text-decoration: none;
+  font-family: verdana, sans-serif;
+  font-size-adjust: 0.58;
+  color: black;
 }
 .active a:hover {
-  color: #FF9999;
+  font-weight: lighter;
 }
-li a {
+.item a {
   color: #400000;
   font-size: 20px;
   text-decoration: none;
@@ -26,27 +32,28 @@ li a {
   font-size-adjust: 0.58;
   margin-left: 30px;
 }
-li {
+.item, .active, .logo {
   float: left;
   text-align: center;
   margin-top: -30px;
 }
-ul {
+.meni {
   margin: 10px;
   margin-top: -56px;
 }
-.logo {
+.meni > .logo {
   text-align: center;
-  text-shadow: 5px 5px 0px #FFCCCC, 7px 7px 0px #380000, 0 0 20px #fefcc9, 10px -10px 30px #330000, -20px -20px 40px #ffae34, 20px -40px 50px #660033, -20px -60px 60px #cd4606, 0 -80px 70px #973716, 10px -90px 80px #451b0e, 8px 8px 0 rgba(255, 0, 180, 0.5), 0 0 10px #FF0000, 0 0 20px #FF0000, 0 0 30px #FF0000, 0 0 40px #FF0000, 0 0 70px #FF0000, 0 0 80px #FF0000, 0 0 100px #FF0000, 0 0 150px #FF0000;
+  text-shadow: 5px 5px 0px #b3b3ff, 7px 7px 0px #380000, 0 0 20px #fefcc9, 10px -10px 30px #330000, -20px -20px 40px #ffae34, 20px -40px 50px #660033, -20px -60px 60px #0000ff, 0 -80px 70px #0000ff, 10px -90px 80px #451b0e, 8px 8px 0 rgba(255, 0, 180, 0.5), 0 0 10px #9999ff, 0 0 20px #9999ff, 0 0 30px #9999ff, 0 0 40px #9999ff, 0 0 70px #9999ff, 0 0 80px #9999ff, 0 0 100px #9999ff, 0 0 150px #9999ff;
   font-size: 55px;
   font-size-adjust: 0.58;
   margin-top: -30px;
-  margin-right: 20%;
+  margin-right: 9%;
   margin-left: -3%;
 }
 body {
   background-color: inherit;
   background-color: #CC3333;
+    background-image: url("pozadina.jpg");
 }
 .naslov div {
   background-color: #000033;
@@ -56,35 +63,153 @@ body {
   height: 100px;
   background: #A0A0A0;
   border-radius: 50px;
-
 }
-
-.forma{
+.forma {
   width: 17%;
   height: 100%;
   border: 1px black;
-  margin-left: 40%;
   margin-top: 13%;
-  background-color: gray;
-
+  margin-left: auto;
+  margin-right: auto;
 
 }
 
-label{
+/*forma za registraciju i kontakt*/
+label {
   font-size: 19px;
   font-family: verdana, sans-serif;
+  color: black;
 }
-th{
+th {
   text-align: center;
   font-size: 20px;
   font-family: verdana, sans-serif;
   padding-bottom: 17px;
+  color: black;
 }
-td{
-padding-bottom: 25px;
+td {
+  padding-bottom: 25px;
+}
+.dugme {
+  align-items: flex-end;
+  color: black;
+  border-radius: 3px;
+}
+.textbox, .textbox1, textarea {
+  border-radius: 10px;
+  width: auto;
+}
+.galerija{
+  position: relative;
+  padding-right: 15px;
+  padding-left: 15px;
+  background-color: rgba(216,211,211,0.7);
+  width: 50%;
+  min-width: 100px;
+  min-height: 300px;
+  margin-right: auto;
+  margin-left: auto;
+  box-shadow: 0px 5px 10px black;
+  margin-top: 120px;
+  overflow: hidden;
+  float: left;
 }
 
-.dugme{
-  align-items: flex-end;
-  color: red;
+
+.novosti {
+  height: 220px;
+  width: 29%;
+  min-width: 100px;
+  margin: 2% 2% 2% 2%;
+  padding: 5px 5px 5px 5px;
+  margin-top: 3%;
+  border: 1px solid black;
+  background-color: #b3b3ff;
+  font-family: verdana, sans-serif;
+  color: #ccccff;
+  border-radius: 5px;
+  opacity: 1;
+  float: left;
+  margin-left: 14px;
+  box-shadow: 0px 5px 10px black;
+}
+img{
+  height: 100%;
+  width: 100%;
+}
+div{
+  display: block;
+  box-sizing: border-box;
+}
+p{
+  text-align: center;
+  color: black;
+}
+
+
+
+/*linkovii i ponudee */
+.ponude {
+  padding-top: 14%;
+  padding-bottom: 30%;
+  padding-left: 22%;
+  padding-right: 11%;
+  min-width: 100px;
+  padding: 30px;
+
+}
+.ponude li, .ponude li a {
+  text-decoration: none;
+  list-style-type: none;
+  text-align: left;
+}
+.link:hover {
+  color: black;
+
+  list-style-type: square;
+  list-style-image: url("check.gif");
+  font-weight: bold;
+}
+.link a {
+  font-size: 20px;
+}
+.link{
+  padding: 10px;
+}
+.nabrajanje {
+  font-size: 30px;
+  padding-bottom: 2px;
+}
+
+
+/*tabelicaaa */
+.header {
+  padding: 3%;
+  background-color: #666699;
+  font-size: 100%;
+}
+.parni td{
+
+    padding: 3%;
+  background-color:#b3ccff;
+  font-size: 100%;
+}
+.neparni td {
+
+    padding: 3%;
+  background-color: #80aaff;
+  font-size: 100%;
+}
+
+.tabelarniprikaz {
+  width: 50%;
+  padding-top: 170px;
+  margin-right: auto;
+  box-sizing: border-box;
+  text-align: center;
+
+}
+.forma td, .forma th{
+  vertical-align: middle;
+  padding: 15px;
 }
