@@ -22,7 +22,7 @@ window.onclick = function(event)
   }
 }
 var datum= new Date();
-var objave= new Array(new Date(2016,datum.getMonth()+1,3,12,30,32,0), new Date(2016,datum.getMonth()+1,3,1,28,50,0), new Date(2016,datum.getMonth()+1,1,3,20,30,0),new Date(2016,datum.getMonth(),20,7,30,50,0),new Date(2016,datum.getMonth()+1,2,4,15,50,0), new Date(2016,datum.getMonth()+1,1,5,15,30,0),new Date(2016,datum.getMonth()+1,1,7,56,15,0),new Date(2016,datum.getMonth()+1,2,7,30,46,0), new Date(2016,datum.getMonth(),12,15,32,15,0),new Date(2016,datum.getMonth(),15,19,10,10,0), new Date(2016,datum.getMonth(),15,7,56,15,0), new Date(2016,datum.getMonth()+1,3,22,08,15,0));	
+var objave= new Array(new Date(2016,datum.getMonth()+1,datum.getDate()-1,12,30,32,0), new Date(2016,datum.getMonth()+1,datum.getDate(),0,0,1,0), new Date(2016,datum.getMonth()+1,1,3,20,30,0),new Date(2016,datum.getMonth(),20,7,30,50,0),new Date(2016,datum.getMonth()+1,2,4,15,50,0), new Date(2016,datum.getMonth()+1,datum.getDate()-1,5,15,30,0),new Date(2016,datum.getMonth()+1,1,7,56,15,0),new Date(2016,datum.getMonth()+1,2,7,30,46,0), new Date(2016,datum.getMonth(),12,15,32,15,0),new Date(2016,datum.getMonth(),15,19,10,10,0), new Date(2016,datum.getMonth(),15,7,56,15,0), new Date(2016,datum.getMonth()+1,3,22,08,15,0));	
 var mjeseci= new Array(31,28,31,30,31,30,31,31,30,31,30,31);
 var zaProvjereDan=0;
 var zaProvjereMjeseca=0;
