@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <title>EventPage</title>
+  <script type="text/javascript" src="kod.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+<script type="text/javascript" src="kod.js"></script>
+  <div id="krug1" class="krug"></div>
+  <ul class="meni">
+    <li class="logo">EventPage</li>
+    <li class="item"> <a href="index.html "> Početna </a> </li>
+    <li class="item"><a href="news.html">Novosti</a> </li>
+    <li class="active"><a href="contact.html">Kontakt</a> </li>
+    <li class="item"> <a href="help.html">Ponude</a></li>
+    <li class="dropdown">
+        <a href="#" onclick="funkcijaZaMeni()" class="pregledi"> Pregled novosti</a>
+        <div id="novostiPregled" class="novostiRaspored">
+           <a href="index.html" onclick="PregledDana()">Pregled dana</a>
+          <a href="index.html" onclick="PregledSedmice()">Pregled sedmice</a>
+          <a href="index.html" onclick="PregledMjeseca()">Pregled mjeseca</a>
+          <a href="index.html"> Sve novosti</a>
+        </div>
+      </li>
+  </ul>
+
+<div class="galerija">
+<table class="forma">
+  <tr >
+    <th colspan="2">Forma za kontakt:</th>
+  </tr>
+  <tr>
+    <td ><label>Ime:</label></td>
+    <td> <input type="text" class="textbox" onchange="ProvjeriText1()" id="tekst1"></td>
+  </tr>
+  <tr>
+    <td><label>Prezime:</label></td>
+    <td><input type="text" class="textbox" onchange="ProvjeriText2()" id="tekst2"> </td>
+  </tr>
+  <tr>
+    <td><label>Broj telefona:</label></td>
+    <td><input type="text" class="textbox" id="telefon"> </td>
+  </tr>
+
+  <tr>
+    <td> <label> Pitanje :</label></td>
+    <td></td>
+  </tr>
+  <tr>
+      <td colspan="2"><textarea name="name" rows="5" cols="30"></textarea></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>
+      <input type="button" name="name" value="Pošalji" class="dugme">
+    </td>
+    </tr>
+</table>
+</div>
+<div id="pomocni"></div>
+</body>
+
+</html>
