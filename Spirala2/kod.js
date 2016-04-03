@@ -22,7 +22,7 @@ window.onclick = function(event)
   }
 }
 var datum= new Date();
-var objave= new Array(new Date(2016,datum.getMonth()+1,3,12,30,32,0), new Date(2016,datum.getMonth()+1,3,1,28,50,0), new Date(2016,datum.getMonth()+1,1,3,20,30,0),new Date(2016,datum.getMonth()+1,2,7,30,50,0),new Date(2016,datum.getMonth()+1,2,4,15,50,0), new Date(2016,datum.getMonth()+1,1,5,15,30,0),new Date(2016,datum.getMonth()+1,1,7,56,15,0),new Date(2016,datum.getMonth()+1,2,7,30,46,0), new Date(2016,datum.getMonth(),12,15,32,15,0),new Date(2016,datum.getMonth(),15,19,10,10,0), new Date(2016,datum.getMonth(),15,7,56,15,0), new Date(2016,datum.getMonth()+1,3,7,12,15,0) );	
+var objave= new Array(new Date(2016,datum.getMonth()+1,3,12,30,32,0), new Date(2016,datum.getMonth()+1,3,1,28,50,0), new Date(2016,datum.getMonth()+1,1,3,20,30,0),new Date(2016,datum.getMonth(),20,7,30,50,0),new Date(2016,datum.getMonth()+1,2,4,15,50,0), new Date(2016,datum.getMonth()+1,1,5,15,30,0),new Date(2016,datum.getMonth()+1,1,7,56,15,0),new Date(2016,datum.getMonth()+1,2,7,30,46,0), new Date(2016,datum.getMonth(),12,15,32,15,0),new Date(2016,datum.getMonth(),15,19,10,10,0), new Date(2016,datum.getMonth(),15,7,56,15,0), new Date(2016,datum.getMonth()+1,3,7,12,15,0) );	
 var mjeseci= new Array(31,28,31,30,31,30,31,31,30,31,30,31);
 var zaProvjereDan=0;
 var zaProvjereMjeseca=0;
@@ -53,7 +53,7 @@ function funkcijaZaNovosti()
 					minute= datum.getMinutes()- objave[i].getMinutes();
 					if(minute>4) document.getElementById(string).innerHTML="Novost objavljena prije " + minute + " minuta.";
 					else if(minute==1) document.getElementById(string).innerHTML="Novost objavljena prije " + minute +" minutu.";
-					else if(minute<0) document.getElementById(string).innerHTML=datum.getDate()+"."+datum.getMonth()+"."+datum.getFullYear()+"." + datum.getHours()+":"+datum.getMinutes();
+					else if(minute<0) document.getElementById(string).innerHTML=objave[i].getDate()+"."+objave[i].getMonth()+"."+objave[i].getFullYear()+"." + objave[i].getHours()+":"+objave[i].getMinutes();
 					else document.getElementById(string).innerHTML="Novost objavljena prije " + minute +" minute.";
 				}
 				else
@@ -62,7 +62,8 @@ function funkcijaZaNovosti()
 					string= "novost"+ dodatniBrojac;
 					if(sati>4) document.getElementById(string).innerHTML="Novost objavljena prije " + parseInt(sati)+ " sati.";
 					else if(sati==1) document.getElementById(string).innerHTML="Novost objavljena prije " + parseInt(sati) +" sat.";
-					else if(sati<0) document.getElementById(string).innerHTML=datum.getDate()+"."+datum.getMonth()+"."+datum.getFullYear()+". " + datum.getHours()+":"+datum.getMinutes();else document.getElementById(string).innerHTML="Novost objavljena prije " + parseInt(sati) +" sata.";
+					else if(sati<0) document.getElementById(string).innerHTML=objave[i].getDate()+"."+objave[i].getMonth()+"."+objave[i].getFullYear()+". " + objave[i].getHours()+":"+objave[i].getMinutes();
+					else document.getElementById(string).innerHTML="Novost objavljena prije " + parseInt(sati) +" sata.";
 
 				}
 			
@@ -78,7 +79,8 @@ function funkcijaZaNovosti()
 					else if(parseInt(dan/7)==1) document.getElementById(string).innerHTML="Novost objavljena prije " + parseInt(dan/7)+ " sedmicu.";
 					else document.getElementById(string).innerHTML="Novost objavljena prije " + parseInt(dan/7)+ " sedmice.";
 				}
-				else if(dan <0 )document.getElementById(string).innerHTML=datum.getDate()+"."+datum.getMonth()+"."+datum.getFullYear()+". " + datum.getHours()+":"+datum.getMinutes();				else
+				else if(dan <0 )document.getElementById(string).innerHTML=objave[i].getDate()+"."+objave[i].getMonth()+"."+objave[i].getFullYear()+". " + objave[i].getHours()+":"+objave[i].getMinutes();				
+				else
 				{
 					if(dan>1) document.getElementById(string).innerHTML="Novost objavljena prije " + dan+ " dana.";
 					else document.getElementById(string).innerHTML="Novost objavljena prije " + dan +" dan.";	
@@ -92,13 +94,10 @@ function funkcijaZaNovosti()
 				{
 					if((godina%4==0 || godina%400==0) && godina%100!=0) mjeseci[1]=29;
 				}
-				if(datum.getMonth()==objave[i].getMonth()) dan= datum.getDate()- objave[i].getDate();
-				else 
-				{
-					dan+=mjeseci[objave[i].getMonth()]-objave[i].getDate();
-					for(var j= objave[i].getMonth()+1; j< datum.getMonth();j++) dan+=mjeseci[j];
-					dan+=datum.getDate();
-				}
+				dan+=mjeseci[objave[i].getMonth()]-objave[i].getDate();
+				for(var j= objave[i].getMonth()+1; j< datum.getMonth();j++) dan+=mjeseci[j];
+				dan+=datum.getDate();
+				
 				if(parseInt(dan/7)>4)document.getElementById(string).innerHTML="Novost objavljena prije " + parseInt(dan/7) + " sedmica.";
 				else if(parseInt(dan/7)==1) document.getElementById(string).innerHTML="Novost objavljena prije " + parseInt(dan/7)+ " sedmicu.";
 				else if(dan<0) document.getElementById(string).innerHTML=datum.getDate()+"."+datum.getMonth()+"."+datum.getFullYear()+". " + datum.getHours()+":"+datum.getMinutes();
@@ -107,7 +106,7 @@ function funkcijaZaNovosti()
 			}
 			else
 			{
-				document.getElementById(string).innerHTML=datum.getDate()+"."+datum.getMonth()+"."+datum.getFullYear()+"." + datum.getHours()+":"+datum.getMinutes();
+				document.getElementById(string).innerHTML=objave[i].getDate()+"."+objave[i].getMonth()+"."+objave[i].getFullYear()+"." + objave[i].getHours()+":"+objave[i].getMinutes();
 			}
 			string="";
 		}
@@ -157,10 +156,21 @@ function PregledSedmice()
 		}
 		
 		string=brojac +"n";
-		if(dan> kojiDan || dan<0) 
+		if(kojiDan==0)
 		{
-			sakrij=document.getElementById(string);
-			sakrij.style.display = 'none';
+			if(dan>6)
+			{
+				sakrij=document.getElementById(string);
+				sakrij.style.display = 'none';
+			}
+		}
+		else 
+		{
+			if(dan> kojiDan || dan<0)
+			{
+				sakrij=document.getElementById(string);
+				sakrij.style.display = 'none';
+			}
 		}
 		string="";
 		dan=0;
