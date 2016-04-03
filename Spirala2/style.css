@@ -217,7 +217,7 @@ p{
   margin-right: auto;
   box-sizing: border-box;
   text-align: center;
-  margin-left: auto;  
+
 
 }
 .forma td, .forma th{
@@ -275,4 +275,8 @@ p{
 .novosti #novost5, .novosti #novost6, .novosti #novost7, .novosti #novost8,
 .novosti #novost9, .novosti #novost10, .novosti #novost11, .novosti #novost12{
   font-size: 77%;
+}
+
+#pozivni{
+  font-size: 15px;
 }

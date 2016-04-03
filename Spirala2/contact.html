@@ -5,12 +5,12 @@
   <link rel="stylesheet" href="style.css">
   <meta charset="utf-8">
   <title>EventPage</title>
-  <script type="text/javascript" src="kod.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="kod.js"></script>
 </head>
 
-<body>
-<script type="text/javascript" src="kod.js"></script>
+<body onload="FormaLoad()">
+
   <div id="krug1" class="krug"></div>
   <ul class="meni">
     <li class="logo">EventPage</li>
@@ -18,15 +18,6 @@
     <li class="item"><a href="news.html">Novosti</a> </li>
     <li class="active"><a href="contact.html">Kontakt</a> </li>
     <li class="item"> <a href="help.html">Ponude</a></li>
-    <li class="dropdown">
-        <a href="#" onclick="funkcijaZaMeni()" class="pregledi"> Pregled novosti</a>
-        <div id="novostiPregled" class="novostiRaspored">
-           <a href="index.html" onclick="PregledDana()">Pregled dana</a>
-          <a href="index.html" onclick="PregledSedmice()">Pregled sedmice</a>
-          <a href="index.html" onclick="PregledMjeseca()">Pregled mjeseca</a>
-          <a href="index.html"> Sve novosti</a>
-        </div>
-      </li>
   </ul>
 
 <div class="galerija">
@@ -36,17 +27,30 @@
   </tr>
   <tr>
     <td ><label>Ime:</label></td>
-    <td> <input type="text" class="textbox" onchange="ProvjeriText1()" id="tekst1"></td>
+    <td> <input type="text" class="textbox" id="ime" onkeydown="FunkcijaZaIme()"></td>
   </tr>
   <tr>
     <td><label>Prezime:</label></td>
-    <td><input type="text" class="textbox" onchange="ProvjeriText2()" id="tekst2"> </td>
+    <td><input type="text" class="textbox" id="prezime" onkeydown="FunkcijaZaPrezime()"> </td>
   </tr>
   <tr>
-    <td><label>Broj telefona:</label></td>
-    <td><input type="text" class="textbox" id="telefon"> </td>
+  <td><label>Drzava:</label></td>
+  <td>
+      <select onchange="ProvjeriKojiSelekt()" id="ponude">
+        <option value="bih">BiH</option>
+        <option value="hrvatska">Hrvatska</option>
+        <option value="srbija">Srbija</option>
+      </select>
+    </td>
   </tr>
-
+  <tr>
+    <td><label>Broj telefona:</label>  </td>
+    <td> <label id="pozivni"> </label> <input type="text" class="textbox" id="telefon" onkeydown="FunkcijaZaTelefon()"> </td>
+  </tr>
+  <tr>
+    <td><label>Email:</label>  </td>
+    <td> <label id="mail"> </label> <input type="email" class="textbox" id="email"> </td>
+  </tr>
   <tr>
     <td> <label> Pitanje :</label></td>
     <td></td>
@@ -62,7 +66,6 @@
     </tr>
 </table>
 </div>
-<div id="pomocni"></div>
 </body>
 
 </html>

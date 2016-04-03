@@ -53,7 +53,7 @@ function funkcijaZaNovosti()
 					minute= datum.getMinutes()- objave[i].getMinutes();
 					if(minute>4) document.getElementById(string).innerHTML="Novost objavljena prije " + minute + " minuta.";
 					else if(minute==1) document.getElementById(string).innerHTML="Novost objavljena prije " + minute +" minutu.";
-					else if(minute<0) document.getElementById(string).innerHTML="Neslaganje sa postavljenim datumom objave: "+ objave[i].getDate()+"."+objave[i].getMonth()+"."+objave[i].getFullYear()+".";
+					else if(minute<0) document.getElementById(string).innerHTML=datum.getDate()+"."+datum.getMonth()+"."+datum.getFullYear()+"." + datum.getHours()+":"+datum.getMinutes();
 					else document.getElementById(string).innerHTML="Novost objavljena prije " + minute +" minute.";
 				}
 				else
@@ -62,8 +62,7 @@ function funkcijaZaNovosti()
 					string= "novost"+ dodatniBrojac;
 					if(sati>4) document.getElementById(string).innerHTML="Novost objavljena prije " + parseInt(sati)+ " sati.";
 					else if(sati==1) document.getElementById(string).innerHTML="Novost objavljena prije " + parseInt(sati) +" sat.";
-					else if(sati<0) document.getElementById(string).innerHTML="Neslaganje sa postavljenim datumom objave: "+ objave[i].getDate()+"."+objave[i].getMonth()+"."+objave[i].getFullYear()+".";
-					else document.getElementById(string).innerHTML="Novost objavljena prije " + parseInt(sati) +" sata.";
+					else if(sati<0) document.getElementById(string).innerHTML=datum.getDate()+"."+datum.getMonth()+"."+datum.getFullYear()+". " + datum.getHours()+":"+datum.getMinutes();else document.getElementById(string).innerHTML="Novost objavljena prije " + parseInt(sati) +" sata.";
 
 				}
 			
@@ -79,8 +78,7 @@ function funkcijaZaNovosti()
 					else if(parseInt(dan/7)==1) document.getElementById(string).innerHTML="Novost objavljena prije " + parseInt(dan/7)+ " sedmicu.";
 					else document.getElementById(string).innerHTML="Novost objavljena prije " + parseInt(dan/7)+ " sedmice.";
 				}
-				else if(dan <0 )document.getElementById(string).innerHTML="Neslaganje sa postavljenim datumom objave: "+ objave[i].getDate()+"."+objave[i].getMonth()+"."+objave[i].getFullYear()+".";
-				else
+				else if(dan <0 )document.getElementById(string).innerHTML=datum.getDate()+"."+datum.getMonth()+"."+datum.getFullYear()+". " + datum.getHours()+":"+datum.getMinutes();				else
 				{
 					if(dan>1) document.getElementById(string).innerHTML="Novost objavljena prije " + dan+ " dana.";
 					else document.getElementById(string).innerHTML="Novost objavljena prije " + dan +" dan.";	
@@ -103,34 +101,16 @@ function funkcijaZaNovosti()
 				}
 				if(parseInt(dan/7)>4)document.getElementById(string).innerHTML="Novost objavljena prije " + parseInt(dan/7) + " sedmica.";
 				else if(parseInt(dan/7)==1) document.getElementById(string).innerHTML="Novost objavljena prije " + parseInt(dan/7)+ " sedmicu.";
-				else if(dan<0) document.getElementById(string).innerHTML="Neslaganje sa postavljenim datumom objave: "+ objave[i].getDate()+"."+objave[i].getMonth()+"."+objave[i].getFullYear()+".";
+				else if(dan<0) document.getElementById(string).innerHTML=datum.getDate()+"."+datum.getMonth()+"."+datum.getFullYear()+". " + datum.getHours()+":"+datum.getMinutes();
 				else document.getElementById(string).innerHTML="Novost objavljena prije " + parseInt(dan/7)+ " sedmice.";
 
 			}
 			else
 			{
-				document.getElementById(string).innerHTML="Novost objavljena dana: "+ objave[i].getDate()+"."+objave[i].getMonth()+"."+objave[i].getFullYear()+".";
+				document.getElementById(string).innerHTML=datum.getDate()+"."+datum.getMonth()+"."+datum.getFullYear()+"." + datum.getHours()+":"+datum.getMinutes();
 			}
 			string="";
 		}
-
-	/* if(zaProvjereDan==1)
-	{
-		 PregledDana();
-		 zaProvjereDan=0;
-	}
-	else if(zaProvjereSedmice==1)
-	{
-		PregledSedmice();
-		zaProvjereSedmice=0;
-	}
-	else if(zaProvjereMjeseca==1)
-	{
-		PregledMjeseca();
-		zaProvjereMjeseca=0;
-
-	}
-	else ; */
 
 }
 
@@ -161,11 +141,13 @@ function PregledSedmice()
 	var string;
 	var brojac=0;
 	var sakrij;
-	//|| (datum.getMonth()==objave[i].getMonth() && objave[i].getDate()> datum.getDate())
+	var kojiDan= datum.getDay();
+
 	for(var i=0;i<12;i++)
 	{	
-		if(datum.getYear()!=objave[i].getYear() || (datum.getMonth()+ -objave[i].getMonth()) >1 ) continue;
+		if(datum.getYear()!=objave[i].getYear() || Math.abs(datum.getMonth()-objave[i].getMonth()) >1 ) continue;
 		brojac=i+1;
+
 		if(datum.getMonth()+1==objave[i].getMonth()) dan= datum.getDate()- objave[i].getDate();
 		else 
 		{
@@ -175,7 +157,7 @@ function PregledSedmice()
 		}
 		
 		string=brojac +"n";
-		if(dan>7 ||dan<0) 
+		if(dan> kojiDan || dan<0) 
 		{
 			sakrij=document.getElementById(string);
 			sakrij.style.display = 'none';
@@ -220,36 +202,115 @@ function resetujSve()
 	}
 }
 
-function ProvjeriText1()
+function FunkcijaZaIme()
 {
-	var tekst= document.getElementById("tekst1").value;
-	var patern= /[A-Z]/i;
-	var provjera= patern.test(tekst);
-	if(provjera==true)
+	var ime= document.getElementById("ime").value;
+	var patern= /^[a-zA-Z]+$/;
+	var proslo= patern.test(ime);
+	var imeTB= document.getElementById("ime");
+	if(proslo==false)
 	{
-		var probni= document.getElementById("tekst1");
-		probni.style.backgroundColor="green";
+		imeTB.style.backgroundColor="red";
 	}
-	else
+	else imeTB.style.backgroundColor="white";
+	proslo=true;
+
+
+	var prezime= document.getElementById("prezime").value;
+	var email= document.getElementById("email");
+	if(ime!="" && prezime!="")
 	{
-		var probni= document.getElementById("tekst1");
-		probni.style.backgroundColor="red";
+		email.readOnly=true;
+		email.style.backgroundColor="gray";
+	}
+	else 
+	{ 
+		email.readOnly=false;
+		email.style.backgroundColor="white";
+	}
+
+}
+
+function FunkcijaZaPrezime()
+{
+	var prezime= document.getElementById("prezime").value;
+	var patern= /^[a-zA-Z]+$/;
+	var proslo= patern.test(prezime);
+	var imeTB= document.getElementById("prezime");
+	if(proslo==false)
+	{
+		imeTB.style.backgroundColor="red";
+	}
+	else imeTB.style.backgroundColor="white";
+	proslo=true;
+	var ime= document.getElementById("ime").value;
+	var email= document.getElementById("email");
+	if(ime!="" && prezime!="")
+	{
+		email.readOnly=true;
+		email.style.backgroundColor="gray";
+	}
+	else 
+	{ 
+		email.readOnly=false;
+		email.style.backgroundColor="white";
 	}
 }
 
-function ProvjeriTekst2()
+function FormaLoad()
 {
-	var tekst= document.getElementById("tekst2").value;
-	var patern= /[A-Z]/i;
-	var provjera= patern.test(tekst);
-	if(provjera==true)
+	var labela= document.getElementById("pozivni");
+}
+
+function ProvjeriKojiSelekt()
+{
+	 var selekt = document.getElementById("ponude").selectedIndex;
+    var objekat = document.getElementById("ponude").options;
+	var pozivni=document.getElementById("pozivni");
+	if(objekat[selekt].index ==0) pozivni.innerHTML="+387";
+	else if(objekat[selekt].index==1) pozivni.innerHTML="+385";
+	else pozivni.innerHTML="+381";
+
+	var ime= document.getElementById("ime").value;
+	var prezime= document.getElementById("prezime").value;
+	var email= document.getElementById("email");
+	if(ime!="" && prezime!="")
 	{
-		var probni= document.getElementById("tekst2");
-		probni.style.backgroundColor="green";
+		email.readOnly=true;
+		email.style.backgroundColor="gray";
 	}
-	else
+	else 
+	{ 
+		email.readOnly=false;
+		email.style.backgroundColor="white";
+	}
+
+}
+
+function FunkcijaZaTelefon()
+{
+	var telefon= document.getElementById("telefon").value;
+	var patern=/^[0-9]+$/;
+	var proslo= patern.test(telefon);
+	var telefon1= document.getElementById("telefon");
+	if(proslo==false)
 	{
-		var probni= document.getElementById("tekst2");
-		probni.style.backgroundColor="red";
+		telefon1.style.backgroundColor="red";
+	}
+	else telefon1.style.backgroundColor="white";
+	proslo=true;
+
+	var ime= document.getElementById("ime").value;
+	var prezime= document.getElementById("prezime").value;
+	var email= document.getElementById("email");
+	if(ime!="" && prezime!="")
+	{
+		email.readOnly=true;
+		email.style.backgroundColor="gray";
+	}
+	else 
+	{ 
+		email.readOnly=false;
+		email.style.backgroundColor="white";
 	}
 }
