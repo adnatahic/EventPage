@@ -103,7 +103,9 @@ function PozoviFunkciju()
 function funkcijaZaNovosti()
 {
 	objave= document.getElementsByClassName("novostiniz");
-	velicina= objave.length;	
+
+	velicina= objave.length;
+	
 
 	
 		for(var i=0; i<velicina; i++)
@@ -113,7 +115,17 @@ function funkcijaZaNovosti()
 			var string="novost"+dodatniBrojac; 
 			var dan=0;
 			
-			var novi= new Date();
+			var date= objave[i].innerHTML;
+			var date_sec = Number(date.substr(17,2));
+			var date_min = Number(date.substr(14,2));
+			var date_hour = Number(date.substr(11,2));
+			var date_year = Number(date.substr(6,4));
+			var date_month = Number(date.substr(3,2))-1;
+			var date_day = Number(date.substr(0,2));
+
+	
+			var novi = new Date(date_year, date_month+1, date_day, date_hour, date_min, date_sec);
+			
 			if(datum.getDate()==novi.getDate() && (datum.getMonth()+1)==novi.getMonth() && datum.getYear()==novi.getYear())
 			{
 				

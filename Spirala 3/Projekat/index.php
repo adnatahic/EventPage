@@ -3,21 +3,7 @@
 <?php include 'logovanje.php' ?>
 <?php include 'dodajNovost.php' ?>
 
-<?php 
-  if($action == "sort")
-    {
-      for($i=0;$i< count($matrica)-1;$i++)
-      {
-        if($matrica[$i][0]>$matrica[$i+1][0])
-        {
-          $pom= $matrica[$i][0];
-          $matrica[$i][0]=$matrica[$i+1][0];
-          $matrica[$i+1][0]=$pom; 
-        }       
-      }
-    window.location.reload();
-    }
- ?>
+
 
 
 <html>
@@ -96,11 +82,28 @@
        <?php } ?>
 
         
+ <?php 
+
+        $matrica1= array();
+        for($i=0;$i< count($matrica);$i++)
+        {
+          $matrica1[$i]= array();
+          $matrica1[$i]=$matrica[$i];
+       
+          if($matrica1[$i][0]>$matrica1[$i+1][0])
+          {
+            $pom= $matrica1[$i][0];
+            $matrica1[$i][0]=$matrica1[$i+1][0];
+            $matrica1[$i+1][0]=$pom; 
+          }      
+          ?> <p> <?php print htmlEntities($matrica1[$i][0], ENT_QUOTES) ?></p> 
+       <?php } 
+
+        ?>
 
   <div class="galerija" >
 
       <?php 
-
         for($i=0; $i<count($matrica)-1; $i++) { ?>
            <div class="novosti" id="<?php print ($i+1)."n"?>">
           <p> <?php print htmlEntities($matrica[$i][0], ENT_QUOTES) ?></p>
@@ -109,8 +112,7 @@
            <p class="novostiniz"><?php print $matrica[$i][4]?></p>
            <p id="<?php print $rijec?>"> </p>
           </div>
-       <?php  }
-        ?>
+       <?php  } ?>
 
 
   </div>

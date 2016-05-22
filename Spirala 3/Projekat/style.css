@@ -24,9 +24,9 @@
 
 }
 
-#textbox1
+#textbox1, #code, #pozivni
 {
-  border-radius: 10px;
+  border-radius: 8px;
   margin-bottom: 2%;
 }
 .loginInput {
@@ -147,7 +147,7 @@ td {
 }
 
 #slika {
-  width: 75%;
+  width: 63%;
 }
 
 #buttonabeceda{
