@@ -3,7 +3,20 @@
 <?php include 'logovanje.php' ?>
 <?php include 'dodajNovost.php' ?>
 
+<?php 
 
+  if (!isset($_SESSION["redom"])){
+    $_SESSION["redom"] = "0";
+    }
+
+  if (!isset($_POST["action"])){
+    $action = $_POST["action"];
+  }
+
+  if ($action == "sort"){
+   $_SESSION["redom"] = "1";
+  }
+ ?>
 
 
 <html>
@@ -81,38 +94,36 @@
       </form>
        <?php } ?>
 
-        
- <?php 
-
-        $matrica1= array();
-        for($i=0;$i< count($matrica);$i++)
-        {
-          $matrica1[$i]= array();
-          $matrica1[$i]=$matrica[$i];
-       
-          if($matrica1[$i][0]>$matrica1[$i+1][0])
-          {
-            $pom= $matrica1[$i][0];
-            $matrica1[$i][0]=$matrica1[$i+1][0];
-            $matrica1[$i+1][0]=$pom; 
-          }      
-          ?> <p> <?php print htmlEntities($matrica1[$i][0], ENT_QUOTES) ?></p> 
-       <?php } 
-
-        ?>
 
   <div class="galerija" >
 
-      <?php 
+       <?php 
+      if($_SESSION['redom']=="0")
+      {
         for($i=0; $i<count($matrica)-1; $i++) { ?>
+
            <div class="novosti" id="<?php print ($i+1)."n"?>">
           <p> <?php print htmlEntities($matrica[$i][0], ENT_QUOTES) ?></p>
-          <p><a href=" <?php print htmlEntities($matrica[$i][1], ENT_QUOTES)?>  "> <img id="slika" src="<?php print htmlEntities($matrica[$i][2], ENT_QUOTES)?>"alt="4.4.2016."> </a></p>
+          <p><a href=" <?php print htmlEntities($matrica[$i][1], ENT_QUOTES)?>  "> <img id="slika" src="<?php print htmlEntities($matrica[$i][2], ENT_QUOTES)?>"alt="slika1.jpg"> </a></p>
           <?php $rijec="novost".($i+1)?>
            <p class="novostiniz"><?php print $matrica[$i][4]?></p>
            <p id="<?php print $rijec?>"> </p>
           </div>
-       <?php  } ?>
+
+       <?php  } }
+
+       if($_SESSION['redom']=="1") 
+        { 
+            for($i=0; $i<count($matrica1)-1; $i++) { ?>
+
+           <div class="novosti" id="<?php print ($i+1)."n"?>">
+          <p> <?php print htmlEntities($matrica1[$i][0], ENT_QUOTES) ?></p>
+          <p><a href=" <?php print htmlEntities($matrica1[$i][1], ENT_QUOTES)?>  "> <img id="slika" src="<?php print htmlEntities($matrica1[$i][2], ENT_QUOTES)?>"alt="slika1.jpg"> </a></p>
+          <?php $rijec="novost".($i+1)?>
+           <p class="novostiniz"><?php print $matrica1[$i][4]?></p>
+           <p id="<?php print $rijec?>"> </p>
+          </div>
+          <?php } }?>
 
 
   </div>

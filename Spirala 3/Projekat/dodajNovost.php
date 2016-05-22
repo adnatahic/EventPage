@@ -34,7 +34,15 @@ $file= fopen("noveNovosti.csv", "r");
       $i++;
     }
 
-    for($i=0;$i<count($matrica1);$i++)
+    for($i=0;$i<count($matrica1)-1;$i++)
+    {
+        if($matrica1[$i][0]>$matrica1[$i+1][0])
+        {
+          $pom= $matrica1[$i][0];
+          $matrica1[$i][0]=$matrica1[$i+1][0];
+          $matrica1[$i+1][0]=$pom;
+        }
+    }
 
      
     

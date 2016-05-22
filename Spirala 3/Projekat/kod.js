@@ -205,10 +205,23 @@ function PregledDana()
 	var string;
 	var brojac=0;
 	var sakrij;
+	objave= document.getElementsByClassName("novostiniz");
+
+	velicina= objave.length;
 	for(var i=0;i<velicina;i++)
 	{
-		brojac=i+1;
-		if(datum.getYear()!=objave[i].getYear() || datum.getMonth()+1!=objave[i].getMonth() || datum.getDate()!=objave[i].getDate())
+			var date= objave[i].innerHTML;
+			var date_sec = Number(date.substr(17,2));
+			var date_min = Number(date.substr(14,2));
+			var date_hour = Number(date.substr(11,2));
+			var date_year = Number(date.substr(6,4));
+			var date_month = Number(date.substr(3,2))-1;
+			var date_day = Number(date.substr(0,2));
+
+	
+			var novi = new Date(date_year, date_month+1, date_day, date_hour, date_min, date_sec);
+			brojac=i+1;
+		if(datum.getYear()!=novi.getYear() || datum.getMonth()+1!=novi.getMonth() || datum.getDate()!=novi.getDate())
 		{
 			string= brojac+ "n";
 			sakrij= document.getElementById(string);
@@ -226,17 +239,30 @@ function PregledSedmice()
 	var brojac=0;
 	var sakrij;
 	var kojiDan= datum.getDay();
+	objave= document.getElementsByClassName("novostiniz");
+
+	velicina= objave.length;
 
 	for(var i=0;i<velicina;i++)
 	{	
-		if(datum.getYear()!=objave[i].getYear() || Math.abs(datum.getMonth()-objave[i].getMonth()) >1 ) continue;
+		var date= objave[i].innerHTML;
+			var date_sec = Number(date.substr(17,2));
+			var date_min = Number(date.substr(14,2));
+			var date_hour = Number(date.substr(11,2));
+			var date_year = Number(date.substr(6,4));
+			var date_month = Number(date.substr(3,2))-1;
+			var date_day = Number(date.substr(0,2));
+
+	
+			var novi = new Date(date_year, date_month+1, date_day, date_hour, date_min, date_sec);
+		if(datum.getYear()!=novi.getYear() || Math.abs(datum.getMonth()-novi.getMonth()) >1 ) continue;
 		brojac=i+1;
 
-		if(datum.getMonth()+1==objave[i].getMonth()) dan= datum.getDate()- objave[i].getDate();
+		if(datum.getMonth()+1==novi.getMonth()) dan= datum.getDate()- novi.getDate();
 		else 
 		{
-			dan+=mjeseci[objave[i].getMonth()]-objave[i].getDate();
-			for(var j= objave[i].getMonth()+1; j< datum.getMonth()+1;j++) dan+=mjeseci[j];
+			dan+=mjeseci[novi.getMonth()]-novi.getDate();
+			for(var j= novi.getMonth()+1; j< datum.getMonth()+1;j++) dan+=mjeseci[j];
 			dan+=datum.getDate();
 		}
 		
@@ -268,13 +294,26 @@ function PregledMjeseca()
 	var string="";
 	var brojac=0;
 	var sakrij;
+	objave= document.getElementsByClassName("novostiniz");
+
+	velicina= objave.length;
 
 	for(var i=0; i<velicina; i++)
 	{
+		var date= objave[i].innerHTML;
+			var date_sec = Number(date.substr(17,2));
+			var date_min = Number(date.substr(14,2));
+			var date_hour = Number(date.substr(11,2));
+			var date_year = Number(date.substr(6,4));
+			var date_month = Number(date.substr(3,2))-1;
+			var date_day = Number(date.substr(0,2));
+
+	
+			var novi = new Date(date_year, date_month+1, date_day, date_hour, date_min, date_sec);
 		brojac=i+1;
 		string=brojac +"n";
 		sakrij=document.getElementById(string);
-		if(datum.getYear()!=objave[i].getYear() || datum.getMonth()+1!=objave[i].getMonth())
+		if(datum.getYear()!=novi.getYear() || datum.getMonth()+1!=novi.getMonth())
 		{
 			sakrij.style.display = 'none';
 		}
@@ -287,6 +326,8 @@ function resetujSve()
 	var string="";
 	var brojac=0;
 	var prikazi;
+	objave= document.getElementsByClassName("novostiniz");
+	velicina= objave.length;
 	for(var i=0;i<velicina;i++)
 	{
 		brojac=i+1;
