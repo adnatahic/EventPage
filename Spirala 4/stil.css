@@ -1,0 +1,8 @@
+li a{
+  display:block;
+  width: 70px;
+}
+a{
+  color: red;
+  text-decoration: none;
+}
